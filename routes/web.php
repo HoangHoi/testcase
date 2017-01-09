@@ -15,28 +15,41 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('login', [
+    'as' => 'get.login',
+    'uses' => 'AuthController@getLogin',
+]);
 
-Route::get('/home', 'HomeController@index');
-Route::get('/mail', function () {
-    return view('mail');
+Route::post('login', [
+    'as' => 'post.login',
+    'uses' => 'AuthController@postLogin',
+]);
+
+Route::get('/home', [
+    'uses' => 'HomeController@index',
+    'as' => 'home',
+]);
+
+Route::get('test', function () {
+    dd(session()->all());
 });
 
-Route::get('update-post/{post}', function (App\Post $post) {
-    if (Gate::allows('update', $post)) {
-        echo 'allows';
-    } else {
-        echo 'not allows';
-    }
-    if (Gate::denies('update', $post)) {
-        echo 'denies';
-    } else {
-        echo 'not denies';
-    }
-    echo Auth::user()->can('update', $post)?'can':'can\'t';
-});
+Route::get('register', [
+    'as' => 'get.register',
+    'uses' => 'AuthController@getRegister',
+]);
 
-Route::post('send-mail', ['uses' => 'MailController@send', 'as' => 'send.mail']);
-Auth::routes();
+Route::post('register', [
+    'as' => 'post.register',
+    'uses' => 'AuthController@postRegister',
+]);
 
-Route::get('/home', 'HomeController@index');
+Route::get('logout', [
+    'as' => 'get.logout',
+    'uses' => 'AuthController@getLogout',
+]);
+
+Route::get('user-all', [
+    'as' => 'user.all',
+    'uses' => 'AuthController@postRegister',
+]);
