@@ -17,4 +17,4 @@ deploy:
   api_key: fd0f0e37-2887-484e-a6e0-137cd952a816
   app: react-tutorial-hoanghoi
   run:
-    - "php artisan migrate --force"
+    - php artisan migrate --force
