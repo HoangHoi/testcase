@@ -19,4 +19,4 @@ deploy:
   run:
     - "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
     - "php artisan key:generate"
-    - "php artisan migrate"
+    - "yes | php artisan migrate"
