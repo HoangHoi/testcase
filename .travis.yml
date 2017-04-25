@@ -12,4 +12,7 @@ before_script:
   - php artisan migrate
 script:
   - vendor/bin/phpunit
-
+deploy:
+  provider: heroku
+  api_key: FVjdNGwQRNxM4Kz1mQv/dR6vsV1TUcN9KipmypCaXI
+  run: "php migrate"
