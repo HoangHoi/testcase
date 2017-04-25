@@ -17,6 +17,6 @@ deploy:
   api_key: fd0f0e37-2887-484e-a6e0-137cd952a816
   app: react-tutorial-hoanghoi
   run:
-    - "cp .env.example .env"
+    - "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
     - "php artisan key:generate"
     - "php artisan migrate"
