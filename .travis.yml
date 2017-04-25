@@ -16,4 +16,7 @@ deploy:
   provider: heroku
   api_key: fd0f0e37-2887-484e-a6e0-137cd952a816
   app: react-tutorial-hoanghoi
-  run: "php migrate"
+  run:
+    - "cp .env.example .env"
+    - "php artisan key:generate"
+    - "php artisan migrate"
