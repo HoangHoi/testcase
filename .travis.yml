@@ -4,9 +4,7 @@ php:
   - 5.6
 
 before_script:
-  - cp .env.travis .env
   - mysql -e 'create database homestead_test;'
-  - composer self-update
   - composer install --no-interaction
   - php artisan key:generate
   - php artisan migrate
@@ -17,5 +15,4 @@ deploy:
   api_key: fd0f0e37-2887-484e-a6e0-137cd952a816
   app: react-tutorial-hoanghoi
   run:
-    - heroku config:set APP_KEY=base64:FVjdNGwQRNxM4Kz1mQv/dR6vsV1TUcN9KipmypCaXI4=
     - php artisan migrate --force
